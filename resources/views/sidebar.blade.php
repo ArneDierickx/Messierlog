@@ -1,11 +1,11 @@
-<section id="sidebar">
+<section class="col-lg-3 d-flex flex-column justify-content-around align-items-center" id="sidebar">
     <nav>
         <ul>
-            @if(\Illuminate\Support\Facades\Request::path() === '/')
+            @if(\Illuminate\Support\Facades\Request::path() === 'personal')
 
-                <li><a id="currentpage" href="{{ url("/") }}">Personal</a></li>
+                <li><a id="currentpage" href="{{ url("/personal") }}">Personal</a></li>
             @else
-                <li><a href="{{ url("/") }}">Personal</a></li>
+                <li><a href="{{ url("/personal") }}">Personal</a></li>
             @endif
             @if(\Illuminate\Support\Facades\Request::path() === 'public')
                 <li><a id="currentpage" href="{{ url("/public") }}">Public</a></li>
@@ -19,26 +19,31 @@
             @endif
         </ul>
     </nav>
-    @if(\Illuminate\Support\Facades\Request::path() ==='create')
-        <a id="currentpage" href="{{ url("/create") }}">UPLOAD</a>
+    @if(\Illuminate\Support\Facades\Request::path() ==='personal/create')
+        <a id="currentpage" href="{{ url("/personal/create") }}">UPLOAD</a>
     @else
-        <a href="{{ url("/create") }}">UPLOAD</a>
+        <a href="{{ url("/personal/create") }}">UPLOAD</a>
     @endif
     <div id="filter">
         <p>Filter</p>
         <ul>
             <li>
-                <select title="Type of telescope">
-                    <option disabled hidden selected>Type of telescope</option>
+                <select id="typeOfTelescope" title="Type of telescope">
+                    <option selected>Type of telescope</option>
+                    <option value="refractor">Refractor</option>
+                    <option value="reflector">Reflector</option>
                 </select>
             </li>
             <li>
-                <select title="Messier object">
-                    <option disabled hidden selected>Messier object</option>
+                <select id="messierObject" title="Messier object">
+                    <option selected>Messier object</option>
+                    @for($i = 1; $i <=110; $i++)
+                        <option value="M{{$i}}">M{{$i}}</option>
+                    @endfor
                 </select>
             </li>
             <li>
-                <input type="date" title="Date" name="date"/>
+                <input id="date" type="date" title="Date" name="date"/>
             </li>
         </ul>
     </div>

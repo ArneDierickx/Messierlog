@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.socket = new WebSocket("wss://messierlog.local:8090");
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,6 +19,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('extra-posts', require('./components/ExtraPosts.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))

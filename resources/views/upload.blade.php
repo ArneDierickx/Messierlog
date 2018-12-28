@@ -2,8 +2,8 @@
 
 @section('content')
     @include('sidebar')
-    <section id="form">
-        <form enctype="multipart/form-data" method="post" action="{{ route("store") }}">
+    <section class="col-lg-9 row mb-2" id="form">
+        <form class="offset-lg-3 col-lg-6 col-md-11 offset-md-1" enctype="multipart/form-data" method="post" action="{{ route("personal.store") }}">
             @csrf
             <div>
                 <label for="messier object">Messier Object:</label>
@@ -64,7 +64,7 @@
                     <input type="date" name="date" id="date" max="{{ date("Y-m-d") }}" required/>
                 </div>
             </fieldset>
-            <div><input type="submit" name="submit" value="Upload"/></div>
+            <div><input type="submit" name="upload" value="Upload"/></div>
         </form>
     </section>
 @endsection

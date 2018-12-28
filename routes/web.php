@@ -11,7 +11,11 @@
 |
 */
 
-Route::resource("/", "LogsController");
+Route::get('/', function () {
+    return redirect("/personal");
+});
+
+Route::resource("/personal", "LogsController");
 
 Route::resource('/public', "LogsController");
 

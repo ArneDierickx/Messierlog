@@ -70,7 +70,7 @@ class LogsController extends Controller
         $log->image = time() . "." . $request->image->getClientOriginalExtension();
         $request->image->move(public_path("images"), $log->image);
         $log->save();
-        return redirect("/");
+        return redirect("/personal")->with("upload", "true");
     }
 
     /**

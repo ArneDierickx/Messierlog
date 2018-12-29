@@ -1,16 +1,26 @@
 # Messierlog
 ## Huidige status
-Momenteel is het ontwerp van de pagina al omgezet naar HTML en CSS, responsiveness is wel nog een werkpuntje. Veel JavaScript is er nog niet, ik had hiervoor Vue.js nog afgewacht voor ik hieraan begon.
-
-Server side is er vooral Laravel geschreven en is er een database aanwezig.
-
-Momenteel kan een gebruiker data invoeren en uploaden naar de database. Op de personal en public pagina's kunnen ze dan deze posts bekijken. Later komt er nog een verschil tussen deze twee pagina's.
+De volledige site is afgewerkt. Er is enkel een kleine bug die ik niet netjes kan oplossen: posts die binnenkomen op de WebSocket worden niet gecontroleerd op user en huidige filter opties.
+De code op de repo zal niet meer werken in homestead en moet op de apache2 server gedraaid worden met de meegegeven configuratie.
 
 ## Starten huidige versie
-Om de huidige versie werkende te krijgen is het voldoende om het project in de homestead omgeving te laten draaien en de database migratie uit te voeren om de database aan te maken.
+In de hosts file moet messierlog.local gelinkt worden aan het IP van de VM waar de apache2 server draait.
+Apache2 maakt gebruik van de volgende niet standaard inggeschakelde/geïnstalleerde modules:
+* php7.3 (moet ook zeker geïnstalleerd worden samen met de nodige extra packages, nodig voor laravel)
+* proxy (voor de websocket)
+* proxy_wstunnel (ook voor de websocket)
+* rewrite (laravel requirement)
 
-De database werkt lokaal op de standaard poort. De databasenaam is messierlog en de gebruiker is messierlog\_user met wachtwoord messierlog\_pwd. Deze user moet tables kunnen aanmaken en moet rijen kunnen aanmaken en lezen.
+Verder wordt SSL en basic authentication gebruikt, deze mogen geen problemen geven.
 
-Bij mij werd de site messierlog.local gemapt naar /home/vagrant/code/messierlog/public in de homestead.yaml file. In de hosts file was er een link tussen messierlog.local en het ip van de homestead vm. Dit zou voldoende moeten zijn om de applicatie te starten.
+Er is geen SQL dump, ik maak gebruik van een migration. Op de database moet een schema "messierlog" aangemaakt worden en een user "messierlog_user" met paswoord "messierlog_pwd", deze moet de database enkel maar bereiken vanop de localhost.
+Deze user krijgt ook alle privileges op het schema "messierlog". Daarna kan in de root van het project (de code moet ondergebracht worden in /var/www/messierlog) het commando php artisan migrate uitgevoerd worden.
+De WebSocket kan gestart worden met php artisan websocket:run.
+
+Er kan hierna gesurft worden naar messierlog.local, http requests worden automatisch doorgestuurd naar de https site.
+
+In /etc/apache2/.htpasswd zijn er 2 users aangemaakt:
+* user1, paswoord; user1
+* user2, paswoord; user2
 
 Dit is volgens mij alles dat nodig is om de huidige versie werkende te krijgen. Als ik toch informatie vergeten ben, aarzel dan niet om me te mailen op arne.dierickx@student.howest.be.

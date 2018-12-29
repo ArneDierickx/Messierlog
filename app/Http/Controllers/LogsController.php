@@ -57,7 +57,7 @@ class LogsController extends Controller
         }
         //TODO: add user handling
         $log = new Logs();
-        $log->username = "TODO"; //$_SERVER["REMOTE_USER"]
+        $log->username = $_SERVER["REMOTE_USER"];
         $log->messier_object = $request->messier_object;
         $log->telescope_type = $request->telescope_type;
         $log->aperture = $request->aperture;

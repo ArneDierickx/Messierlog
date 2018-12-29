@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.socket = new WebSocket("wss://messierlog.local:8090");
+window.socket = new WebSocket("wss://messierlog.local/wss/");
 
 /**
  * The following block of code may be used to automatically register your

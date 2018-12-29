@@ -14045,7 +14045,7 @@ module.exports = __webpack_require__(53);
 __webpack_require__(14);
 
 window.Vue = __webpack_require__(37);
-window.socket = new WebSocket("ws://messierlog.local:8090");
+window.socket = new WebSocket("wss://messierlog.local/wss/");
 
 /**
  * The following block of code may be used to automatically register your

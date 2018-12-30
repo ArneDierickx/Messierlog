@@ -31,3 +31,5 @@ Verder hoop ik dat alle VM apache2 configuratie in de map /etc/apache2 zit, als 
 Dit is volgens mij alles dat nodig is om de huidige versie werkende te krijgen. Als ik toch informatie vergeten ben, aarzel dan niet om me te mailen op arne.dierickx@student.howest.be.
 
 Link naar UX prototype: https://xd.adobe.com/view/9867fbc7-35a1-428b-635a-f763be758142-ee56/
+
+De link toont enkel maar mijn wireframes en niet mijn visual designs, terwijl deze zich allemaal in dezelfde file bevinden, daarom heb ik de file ook in de repo toegevoegd aan de map #wireframes_visual_designs.
